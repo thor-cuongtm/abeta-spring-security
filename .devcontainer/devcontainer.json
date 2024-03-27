@@ -1,0 +1,46 @@
+{
+    "name": "Spring Boot",
+    "dockerFile": "Dockerfile",
+    "runArgs": [
+        "--init",
+        "--network=host"
+    ], // use to database container
+    "features": {
+        "ghcr.io/devcontainers/features/java": {
+            "version": "17"
+        },
+        "ghcr.io/devcontainers/features/node": "none",
+        "ghcr.io/devcontainers/features/git": {
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
+    "postCreateCommand": "./gradlew clean build",
+    "customizations": {
+        "vscode": {
+            "settings": {
+				"java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current",
+				"java.configuration.runtimes": [
+					{
+						"default": true,
+						"name": "JavaSE-17",
+						"path": "/usr/local/sdkman/candidates/java/current"
+					}
+				]
+			},
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "pivotal.vscode-spring-boot",
+                "vmware.vscode-boot-dev-pack",
+                "vscjava.vscode-spring-initializr",
+                "Oracle.oracle-java",
+                "vscjava.vscode-gradle",
+                "eamodio.gitlens",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "redhat.vscode-yaml"
+            ]
+        }
+    },
+    // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode"
+}
